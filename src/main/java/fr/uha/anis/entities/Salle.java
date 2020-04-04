@@ -1,5 +1,87 @@
 package fr.uha.anis.entities;
 
-public class Salle {
+import java.io.Serializable;
+import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Id;
+
+
+@Entity
+public class Salle implements Serializable {
+
+	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Long id;
+	private String name;
+	private int nombrePlaces;
+	@ManyToOne
+	private Cinema cinema;
+	@OneToMany(mappedBy = "salle")
+	private Collection<Place> places;
+	@OneToMany(mappedBy = "salle")
+	private Collection<Projection> projections;
+	public Salle() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Salle(String name, int nombrePlaces, Cinema cinema) {
+		super();
+		this.name = name;
+		this.nombrePlaces = nombrePlaces;
+		this.cinema = cinema;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getNombrePlaces() {
+		return nombrePlaces;
+	}
+
+	public void setNombrePlaces(int nombrePlaces) {
+		this.nombrePlaces = nombrePlaces;
+	}
+
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+
+	public Collection<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(Collection<Place> places) {
+		this.places = places;
+	}
+
+	public Collection<Projection> getProjections() {
+		return projections;
+	}
+
+	public void setProjections(Collection<Projection> projections) {
+		this.projections = projections;
+	}
+
+	
 }
