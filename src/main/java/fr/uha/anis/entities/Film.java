@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import javax.persistence.Id;
 
 
@@ -24,6 +27,7 @@ public class Film {
 	private double duree;
 	private String photo;
 	@OneToMany(mappedBy = "film")
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Projection> projections;
 	@ManyToOne
 	private Categorie categorie;

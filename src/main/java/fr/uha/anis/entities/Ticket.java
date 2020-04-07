@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import javax.persistence.Id;
 
 @Entity
@@ -18,6 +22,7 @@ public class Ticket {
 	@ManyToOne
 	private Place place;
 	@ManyToOne
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Projection projection;
 	public Ticket() {
 		// TODO Auto-generated constructor stub

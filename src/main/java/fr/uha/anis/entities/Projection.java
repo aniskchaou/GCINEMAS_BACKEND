@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import javax.persistence.Id;
 
 @Entity
@@ -19,8 +23,10 @@ public class Projection {
     @ManyToOne
     private Film film;
     @ManyToOne
+    @JsonProperty(access=Access.WRITE_ONLY)
     private Salle salle;
 	@OneToMany(mappedBy = "projection")
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Ticket> tickets;
 	@ManyToOne
 	private Seance seance;

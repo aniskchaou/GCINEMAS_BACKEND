@@ -71,7 +71,7 @@ public class CinemaServiceImpl implements ICinemaService{
 				Cinema cinema=new Cinema();
 				cinema.setName(cinemaName);
 				cinema.setVille(v);
-				cinema.setNombreSalles(3);
+				cinema.setNombreSalles(1);
 				cinemaRepository.save(cinema);
 				//cinema.setNombreSalles(nombreSalles);
 			});
@@ -87,7 +87,7 @@ public class CinemaServiceImpl implements ICinemaService{
 			Film film=new Film();
 			film.setTitre(titre);
 			film.setDuree(22.00);
-			film.setPhoto(titre);
+			film.setPhoto(titre.replaceAll(" ","")+".jpg");
 			film.setCategorie(categories.get(new Random().nextInt(categories.size())));
 			filmRepository.save(film);
 		});
@@ -97,7 +97,7 @@ public class CinemaServiceImpl implements ICinemaService{
 	@Override
 	public void initPlaces() {
 		salleRepository.findAll().forEach(salle->{
-			for (int i = 0; i < 2; i++) {
+			for (int i = 0; i < salle.getNombrePlaces(); i++) {
 				Place place=new Place();
 				place.setNumero(i);
 				place.setSalle(salle);
@@ -133,10 +133,10 @@ public class CinemaServiceImpl implements ICinemaService{
 	@Override
 	public void initSalles() {
 		cinemaRepository.findAll().forEach(cinema->{
-			for (int i = 0; i < cinema.getNombreSalles(); i++) {
+			for (int i = 0; i <= 4; i++) {
 			Salle salle=new Salle();
 			salle.setName("Salle "+i+1);
-			salle.setNombrePlaces(6);
+			salle.setNombrePlaces(5);
 			salle.setCinema(cinema);
 			salleRepository.save(salle);
 			}
@@ -146,7 +146,7 @@ public class CinemaServiceImpl implements ICinemaService{
 	@Override
 	public void initSeances() {
 		SimpleDateFormat  simpleDate= new SimpleDateFormat("HH:mm");
-		Stream.of("12:00","15:00","20:00","00:00").forEach(s->{
+		Stream.of("12:00","15:00").forEach(s->{
 			Seance seance=new Seance();
 			try {
 				seance.setHeureDebut(simpleDate.parse(s));

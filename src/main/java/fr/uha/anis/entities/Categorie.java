@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 @Entity
 public class Categorie {
@@ -17,6 +20,7 @@ public class Categorie {
 	
 	private String name;
 	@OneToMany(mappedBy = "categorie")
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Film> films;
 	
 	public Categorie() {

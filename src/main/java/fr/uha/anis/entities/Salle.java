@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import javax.persistence.Id;
 
 
@@ -19,10 +23,13 @@ public class Salle implements Serializable {
 	private String name;
 	private int nombrePlaces;
 	@ManyToOne
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Cinema cinema;
 	@OneToMany(mappedBy = "salle")
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Place> places;
 	@OneToMany(mappedBy = "salle")
+	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Projection> projections;
 	public Salle() {
 		// TODO Auto-generated constructor stub
