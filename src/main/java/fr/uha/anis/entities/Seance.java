@@ -13,13 +13,12 @@ public class Seance {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date heureDebut;
+	private String heureDebut;
 	
 	public Seance() {
 		
 	}
-	public Seance(Date heureDebut) {
+	public Seance(String heureDebut) {
 		super();
 		this.heureDebut = heureDebut;
 	}
@@ -29,10 +28,10 @@ public class Seance {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getHeureDebut() {
+	public String getHeureDebut() {
 		return heureDebut;
 	}
-	public void setHeureDebut(Date heureDebut) {
+	public void setHeureDebut(String heureDebut) {
 		this.heureDebut = heureDebut;
 	}
 	

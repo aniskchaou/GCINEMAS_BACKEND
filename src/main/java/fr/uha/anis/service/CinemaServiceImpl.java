@@ -152,13 +152,8 @@ public class CinemaServiceImpl implements ICinemaService{
 		SimpleDateFormat  simpleDate= new SimpleDateFormat("HH:mm");
 		Stream.of("12:00","15:00").forEach(s->{
 			Seance seance=new Seance();
-			try {
-				seance.setHeureDebut(simpleDate.parse(s));
-				seanceRepository.save(seance);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			seance.setHeureDebut(s);
+			seanceRepository.save(seance);
 		});
 		
 	}
