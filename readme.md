@@ -24,4 +24,4 @@ https://github.com/aniskchaou/PROJET_GESTION_DES_CINEMAS_ANGULAR_FRONT_END
 
 ## TECHNOLOGIES
 
-Angular 7, typescript
+Java, Springboot, JPA, Hibernate, MySQL 
