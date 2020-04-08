@@ -3,16 +3,12 @@ package fr.uha.anis.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import fr.uha.anis.dao.CategorieRepository;
 import fr.uha.anis.dao.CinemaRepository;
 import fr.uha.anis.dao.FilmRepository;
@@ -31,7 +27,7 @@ import fr.uha.anis.entities.Salle;
 import fr.uha.anis.entities.Seance;
 import fr.uha.anis.entities.Ticket;
 import fr.uha.anis.entities.Ville;
-import javassist.Loader.Simple;
+
 @Service
 @Transactional
 public class CinemaServiceImpl implements ICinemaService{
@@ -54,6 +50,8 @@ public class CinemaServiceImpl implements ICinemaService{
 	ProjectionRepository projectionRepository;
 	@Autowired
 	TicketRepository ticketRepository;
+	
+	//catagorie
 	@Override
 	public void initCategories() {
 		Stream.of("Action","Fiction","Drama").forEach(cat->{
@@ -64,6 +62,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//cinemas
 	@Override
 	public void initCinemas() {
 		villeRepository.findAll().forEach(v->{
@@ -80,6 +79,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//films
 	@Override
 	public void initFilms() {
 		List<Categorie> categories=categorieRepository.findAll();
@@ -94,6 +94,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//places
 	@Override
 	public void initPlaces() {
 		salleRepository.findAll().forEach(salle->{
@@ -108,6 +109,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//projections
 	@Override
 	public void initProjections() {
 		villeRepository.findAll().forEach(ville->{
@@ -130,6 +132,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//salles
 	@Override
 	public void initSalles() {
 		cinemaRepository.findAll().forEach(cinema->{
@@ -143,6 +146,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		});
 	}
 
+	//seances
 	@Override
 	public void initSeances() {
 		SimpleDateFormat  simpleDate= new SimpleDateFormat("HH:mm");
@@ -159,6 +163,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//tickets
 	@Override
 	public void initTickets() {
 		projectionRepository.findAll().forEach(projection->{
@@ -174,6 +179,7 @@ public class CinemaServiceImpl implements ICinemaService{
 		
 	}
 
+	//villes
 	@Override
 	public void initVilles() {
 		Stream.of("Strasboug","Lyon","Paris").forEach(v->{

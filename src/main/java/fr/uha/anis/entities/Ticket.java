@@ -24,8 +24,9 @@ public class Ticket {
 	@ManyToOne
 	@JsonProperty(access=Access.WRITE_ONLY)
 	private Projection projection;
+	
 	public Ticket() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Ticket(String nomClient, double prix, int codePayment, boolean reserve, Place place) {

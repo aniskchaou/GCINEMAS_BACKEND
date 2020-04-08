@@ -7,6 +7,7 @@ public class TicketForm {
 
 	String nomClient;
 	String codePayment;
+	
 	public String getCodePayment() {
 		return codePayment;
 	}

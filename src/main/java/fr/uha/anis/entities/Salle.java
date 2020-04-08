@@ -18,6 +18,8 @@ import javax.persistence.Id;
 @Entity
 public class Salle implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	private String name;
@@ -31,8 +33,10 @@ public class Salle implements Serializable {
 	@OneToMany(mappedBy = "salle")
 	@JsonProperty(access=Access.WRITE_ONLY)
 	private Collection<Projection> projections;
+	
+	
 	public Salle() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Salle(String name, int nombrePlaces, Cinema cinema) {

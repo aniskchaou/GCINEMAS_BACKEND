@@ -22,7 +22,7 @@ public class Ville {
 	private Collection<Cinema> cinemas;
 	
 	public Ville() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Ville(String name, double lattitude, double attitude, double longitude, Collection<Cinema> cinemas) {

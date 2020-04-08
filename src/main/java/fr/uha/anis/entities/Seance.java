@@ -15,8 +15,9 @@ public class Seance {
 	private Long id;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date heureDebut;
+	
 	public Seance() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Seance(Date heureDebut) {
 		super();
