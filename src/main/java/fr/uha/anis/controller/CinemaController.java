@@ -42,12 +42,13 @@ public class CinemaController {
 	}
 	
 	//afficher image
-	@GetMapping(path="/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
+	@GetMapping(path="/images/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
 	public byte[] getImage(@PathVariable (name="id")Long id) throws IOException
 	{
 		Film film=filmRepository.findById(id).get();
 		String nameFile=film.getPhoto();
-		File file=new File(System.getProperty("user.home")+"/cinema/"+nameFile);
+		//File file=new File(System.getProperty("user.home")+"/cinema/"+nameFile);
+		File file=new File(nameFile)
 		Path path=Paths.get(file.toURI());
 		return Files.readAllBytes(path);
 	}
