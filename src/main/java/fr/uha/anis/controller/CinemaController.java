@@ -48,7 +48,7 @@ public class CinemaController {
 		Film film=filmRepository.findById(id).get();
 		String nameFile=film.getPhoto();
 		//File file=new File(System.getProperty("user.home")+"/cinema/"+nameFile);
-		File file=new File(nameFile)
+		File file=new File(nameFile);
 		Path path=Paths.get(file.toURI());
 		return Files.readAllBytes(path);
 	}
