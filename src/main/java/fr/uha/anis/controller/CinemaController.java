@@ -23,7 +23,7 @@ import fr.uha.anis.dao.FilmRepository;
 import fr.uha.anis.dao.TicketRepository;
 import fr.uha.anis.entities.Film;
 import fr.uha.anis.entities.Ticket;
-@CrossOrigin("cinemas-anis-kchaou.herokuapp.com")
+@CrossOrigin(origins = "*")
 @RestController
 
 public class CinemaController {
