@@ -27,15 +27,15 @@ public class GestionDesCinemasApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		restConfiguration.exposeIdsFor(Film.class,Salle.class,Ticket.class);
-	    //cinemaService.initVilles();
-		//cinemaService.initCinemas();
-	    //cinemaService.initSalles();
-	   // cinemaService.initPlaces();
-	   // cinemaService.initSeances();
-	   // cinemaService.initCategories();
-	   // cinemaService.initFilms();
-	    //cinemaService.initProjections();
-	   // cinemaService.initTickets();
+	    cinemaService.initVilles();
+		cinemaService.initCinemas();
+	   cinemaService.initSalles();
+	    cinemaService.initPlaces();
+	    cinemaService.initSeances();
+	    cinemaService.initCategories();
+	    cinemaService.initFilms();
+	    cinemaService.initProjections();
+	    cinemaService.initTickets();
 		
 	}
 
