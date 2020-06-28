@@ -42,7 +42,7 @@ public class CinemaController {
 	}
 	
 	//afficher image
-	@GetMapping(path="/images/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
+	@GetMapping(path="/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
 	public byte[] getImage(@PathVariable (name="id")Long id) throws IOException
 	{
 		Film film=filmRepository.findById(id).get();
