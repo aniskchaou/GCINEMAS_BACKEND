@@ -86,7 +86,7 @@ public class CinemaServiceImpl implements ICinemaService {
 	@Override
 	public void initFilms()  {
 		 try {
-			 int[] realisateurs={"David Lynch","David Lynch","Orson Welles","Nicolas Winding Refn","Akira Kurosawa"};
+			 String[] realisateurs={"David Lynch","David Lynch","Orson Welles","Nicolas Winding Refn","Akira Kurosawa"};
             List<Categorie> categories = categorieRepository.findAll();
 		String pattern = "yyyy-MM-dd";
                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
