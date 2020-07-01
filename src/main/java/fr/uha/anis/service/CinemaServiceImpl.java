@@ -96,7 +96,7 @@ public class CinemaServiceImpl implements ICinemaService {
 			Film film = new Film();
 			film.setTitre(titre);
 			film.setDuree(new Random().nextInt(100) + 50);
-			film.setRealisateur(new Random().nextInt(realisateurs.length));
+			film.setRealisateur(realisateurs[new Random().nextInt(realisateurs.length)]);
 			film.setDateSortie(date);
 			//film.setCategorie(new Random().nextInt(categories.size()));
 			film.setPhoto(titre.replaceAll(" ", "") + ".jpg");
