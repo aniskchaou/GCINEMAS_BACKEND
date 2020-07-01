@@ -86,15 +86,19 @@ public class CinemaServiceImpl implements ICinemaService {
 	@Override
 	public void initFilms() {
 		List<Categorie> categories = categorieRepository.findAll();
+		String pattern = "yyyy-MM-dd";
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                Date date = simpleDateFormat.parse("2018-09-09");
+		
 		Stream.of("Roma", "Parasite", "The irishman", "Mariage Story", "Moonlight").forEach(titre -> {
 			Film film = new Film();
 			film.setTitre(titre);
 			film.setDuree(new Random().nextInt(100) + 50);
 			film.setRealisateur("Steven Spielberg");
-			film.setDateSortie(new Date());
+			film.setDateSortie(date);
 			//film.setCategorie(new Random().nextInt(categories.size()));
 			film.setPhoto(titre.replaceAll(" ", "") + ".jpg");
-			film.setCategorie(categories.get(new Random().nextInt(categories.size())));
+			film.setCategorie(categories.get(new Random().nextInt(categories.size())).name);
 			filmRepository.save(film);
 		});
 
