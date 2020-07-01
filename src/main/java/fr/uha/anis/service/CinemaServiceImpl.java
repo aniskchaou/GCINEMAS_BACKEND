@@ -89,7 +89,7 @@ public class CinemaServiceImpl implements ICinemaService {
 		Stream.of("Roma", "Parasite", "The irishman", "Mariage Story", "Moonlight").forEach(titre -> {
 			Film film = new Film();
 			film.setTitre(titre);
-			film.setDuree(new Random().nextInt(film.size()) + 50);
+			film.setDuree(new Random().nextInt(100) + 50);
 			film.setRealisateur("Steven Spielberg");
 			film.setDateSortie(new Date());
 			//film.setCategorie(new Random().nextInt(categories.size()));
