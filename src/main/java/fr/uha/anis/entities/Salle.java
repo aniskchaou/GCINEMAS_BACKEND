@@ -14,31 +14,29 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import javax.persistence.Id;
 
-
 @Entity
 public class Salle implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private int nombrePlaces;
 	@ManyToOne
-	@JsonProperty(access=Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Cinema cinema;
 	@OneToMany(mappedBy = "salle")
-	@JsonProperty(access=Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Collection<Place> places;
 	@OneToMany(mappedBy = "salle")
-	@JsonProperty(access=Access.WRITE_ONLY)
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Collection<Projection> projections;
-	
-	
+
 	public Salle() {
-		
+
 	}
-	
+
 	public Salle(String name, int nombrePlaces, Cinema cinema) {
 		super();
 		this.name = name;
@@ -94,5 +92,4 @@ public class Salle implements Serializable {
 		this.projections = projections;
 	}
 
-	
 }

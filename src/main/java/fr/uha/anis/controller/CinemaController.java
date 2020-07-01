@@ -23,44 +23,41 @@ import fr.uha.anis.dao.FilmRepository;
 import fr.uha.anis.dao.TicketRepository;
 import fr.uha.anis.entities.Film;
 import fr.uha.anis.entities.Ticket;
-@CrossOrigin(exposedHeaders="Access-Control-Allow-Origin")
+
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 @RestController
 
 public class CinemaController {
 
 	@Autowired
 	private FilmRepository filmRepository;
+
 	@Autowired
 	private TicketRepository ticketRepository;
-	
-	
-	
+
 	@GetMapping("/filmlists")
-	public List<Film> getFilms()
-	{
+	public List<Film> getFilms() {
 		return filmRepository.findAll();
 	}
-	
-	//afficher image
-	@GetMapping(path="/images/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
-	public byte[] getImage(@PathVariable (name="id")Long id) throws IOException
-	{
-		Film film=filmRepository.findById(id).get();
-		String nameFile=film.getPhoto();
-		//File file=new File(System.getProperty("user.home")+"/cinema/"+nameFile);
-		File file=new File(nameFile);
-		Path path=Paths.get(file.toURI());
+
+	// afficher image
+	@GetMapping(path = "/images/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+	public byte[] getImage(@PathVariable(name = "id") Long id) throws IOException {
+		Film film = filmRepository.findById(id).get();
+		String nameFile = film.getPhoto();
+		// File file=new File(System.getProperty("user.home")+"/cinema/"+nameFile);
+		File file = new File(nameFile);
+		Path path = Paths.get(file.toURI());
 		return Files.readAllBytes(path);
 	}
-	
-	//payer ticket
+
+	// payer ticket
 	@PostMapping("/payerticket")
 	@Transactional
-	public List<Ticket> payerTicket(@RequestBody  TicketForm ticketForm)
-	{
-		List<Ticket> listTickets=new ArrayList<Ticket>();
-		ticketForm.getTickets().forEach(idTicket->{
-			Ticket ticket=ticketRepository.findById(idTicket).get();
+	public List<Ticket> payerTicket(@RequestBody TicketForm ticketForm) {
+		List<Ticket> listTickets = new ArrayList<Ticket>();
+		ticketForm.getTickets().forEach(idTicket -> {
+			Ticket ticket = ticketRepository.findById(idTicket).get();
 			System.out.println(ticket.getId());
 			ticket.setNomClient(ticketForm.getNomClient());
 			ticket.setCodePayment(Integer.parseInt(ticketForm.getCodePayment()));
@@ -68,7 +65,6 @@ public class CinemaController {
 			ticketRepository.save(ticket);
 			listTickets.add(ticket);
 		});
-		System.out.print(ticketForm.toString());
 		return new ArrayList<Ticket>();
 	}
 }

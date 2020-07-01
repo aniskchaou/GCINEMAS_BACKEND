@@ -20,6 +20,8 @@ public class GestionDesCinemasApplication implements CommandLineRunner {
 	
 	@Autowired
 	RepositoryRestConfiguration restConfiguration;
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(GestionDesCinemasApplication.class, args);
 	}
