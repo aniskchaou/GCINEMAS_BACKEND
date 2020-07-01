@@ -84,7 +84,7 @@ public class CinemaServiceImpl implements ICinemaService {
 
 	// films
 	@Override
-	public void initFilms() {
+	public void initFilms() throws Exception {
 		List<Categorie> categories = categorieRepository.findAll();
 		String pattern = "yyyy-MM-dd";
                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
