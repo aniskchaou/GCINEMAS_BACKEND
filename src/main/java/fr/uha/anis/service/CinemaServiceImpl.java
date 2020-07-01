@@ -84,8 +84,9 @@ public class CinemaServiceImpl implements ICinemaService {
 
 	// films
 	@Override
-	public void initFilms() throws Exception {
-		List<Categorie> categories = categorieRepository.findAll();
+	public void initFilms()  {
+		 try {
+            List<Categorie> categories = categorieRepository.findAll();
 		String pattern = "yyyy-MM-dd";
                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
                 Date date = simpleDateFormat.parse("2018-09-09");
@@ -101,6 +102,10 @@ public class CinemaServiceImpl implements ICinemaService {
 			film.setCategorie(categories.get(new Random().nextInt(categories.size())));
 			filmRepository.save(film);
 		});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		
 
 	}
 
