@@ -86,6 +86,7 @@ public class CinemaServiceImpl implements ICinemaService {
 	@Override
 	public void initFilms()  {
 		 try {
+			 int[] realisateurs={"David Lynch","David Lynch","Orson Welles","Nicolas Winding Refn","Akira Kurosawa"}
             List<Categorie> categories = categorieRepository.findAll();
 		String pattern = "yyyy-MM-dd";
                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
@@ -95,7 +96,7 @@ public class CinemaServiceImpl implements ICinemaService {
 			Film film = new Film();
 			film.setTitre(titre);
 			film.setDuree(new Random().nextInt(100) + 50);
-			film.setRealisateur("Steven Spielberg");
+			film.setRealisateur(new Random().nextInt(realisateurs.length));
 			film.setDateSortie(date);
 			//film.setCategorie(new Random().nextInt(categories.size()));
 			film.setPhoto(titre.replaceAll(" ", "") + ".jpg");
